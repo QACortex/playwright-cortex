@@ -34,6 +34,7 @@ Flow:
 
 ## 📁 Project Structure
 
+```
 playwright-cortex/
 ├── tests/
 │   └── e2e-purchase-flow.spec.ts
@@ -50,6 +51,7 @@ playwright-cortex/
 ├── package.json
 ├── .env.qa
 └── README.md
+```
 
 
 ## ⚙️ Installation
@@ -70,13 +72,16 @@ npm install -D allure-playwright allure-commandline
 
 Create file:
 
+```
 .env.qa
+```
 
 Add:
 
+```
 BASE_URL=https://www.saucedemo.com/
 ENV=qa
-
+```
 
 ## 🧪 Run Tests
 
@@ -118,21 +123,24 @@ npx allure open reports/allure-report
 ['allure-playwright', { resultsDir: 'reports/allure-results' }]
 
 
-# 📌 NPM Scripts
+## 📌 NPM Scripts
 
-"scripts": {
-  "test": "npx playwright test",
-  "test:headed": "npx playwright test --headed",
-  "test:chrome": "npx playwright test --project=chromium",
-  "test:firefox": "npx playwright test --project=firefox",
-  "test:webkit": "npx playwright test --project=webkit",
-  "test:debug": "npx playwright test --debug",
-  "test:report": "npx playwright show-report reports/html",
-  "test:allure": "npx playwright test",
-  "allure:generate": "npx allure generate reports/allure-results --clean -o reports/allure-report",
-  "allure:open": "npx allure open reports/allure-report"
+```json
+{
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit",
+    "test:debug": "npx playwright test --debug",
+    "test:report": "npx playwright show-report reports/html",
+    "test:allure": "npx playwright test",
+    "allure:generate": "npx allure generate reports/allure-results --clean -o reports/allure-report",
+    "allure:open": "npx allure open reports/allure-report"
+  }
 }
-
+```
 
 # 🧱 BasePage Common Utilities
 
