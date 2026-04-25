@@ -1,0 +1,15 @@
+{
+  "standardUser": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "products": {
+    "product1": "Sauce Labs Fleece Jacket",
+    "product2": "Sauce Labs Onesie"
+  },
+  "checkout": {
+    "firstName": "Vinoth",
+    "lastName": "QA",
+    "zipCode": "12345"
+  }
+}
