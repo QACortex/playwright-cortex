@@ -56,6 +56,7 @@ playwright-cortex/
 
 ## ⚙️ Installation
 
+```bash
 git clone <your-repo-url>
 cd playwright-cortex
 npm install
@@ -66,6 +67,7 @@ npm install dotenv
 
 # Install Allure dependencies
 npm install -D allure-playwright allure-commandline
+```
 
 
 ## 🌍 Environment Configuration
@@ -85,10 +87,12 @@ ENV=qa
 
 ## 🧪 Run Tests
 
+```bash
 npm run test
 npm run test:headed
 npm run test:chrome
 npm run test:debug
+```
 
 
 ## 📊 Reports
