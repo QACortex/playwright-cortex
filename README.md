@@ -57,7 +57,7 @@ playwright-cortex/
 ## ⚙️ Installation
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/QACortex/playwright-cortex.git
 cd playwright-cortex
 npm install
 npx playwright install
