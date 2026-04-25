@@ -1,8 +1,10 @@
 # 🚀 Playwright Cortex
 
-Playwright Cortex is a scalable UI automation framework built using Playwright with TypeScript.
+**Playwright Cortex** is a scalable UI automation framework built using
+Playwright with TypeScript.\
+This framework is designed for QA engineers to quickly start automation
+with a clean, maintainable, and extensible structure.
 
----
 
 ## 📌 Features Implemented
 
@@ -29,7 +31,6 @@ Flow:
 - Complete checkout  
 - Validate order success  
 
----
 
 ## 📁 Project Structure
 
@@ -50,7 +51,6 @@ playwright-cortex/
 ├── .env.qa
 └── README.md
 
----
 
 ## ⚙️ Installation
 
@@ -65,7 +65,6 @@ npm install dotenv
 # Install Allure dependencies
 npm install -D allure-playwright allure-commandline
 
----
 
 ## 🌍 Environment Configuration
 
@@ -78,7 +77,6 @@ Add:
 BASE_URL=https://www.saucedemo.com/
 ENV=qa
 
----
 
 ## 🧪 Run Tests
 
@@ -87,7 +85,6 @@ npm run test:headed
 npm run test:chrome
 npm run test:debug
 
----
 
 ## 📊 Reports
 
@@ -95,7 +92,6 @@ npm run test:debug
 
 npm run test:report
 
----
 
 ## 🔥 Allure Report
 
@@ -116,14 +112,11 @@ npx allure open reports/allure-report
 - Always use 'allure open'
 - Ensure results folder exists before generating report
 
----
----
 
 # ⚙️ Playwright Configuration
 
 ['allure-playwright', { resultsDir: 'reports/allure-results' }]
 
----
 
 # 📌 NPM Scripts
 
@@ -140,10 +133,6 @@ npx allure open reports/allure-report
   "allure:open": "npx allure open reports/allure-report"
 }
 
----
-
-
----
 
 # 🧱 BasePage Common Utilities
 
@@ -153,7 +142,6 @@ npx allure open reports/allure-report
 - Menu handling  
 - Logout functionality  
 
----
 
 # 🚧 Upcoming Enhancements
 
@@ -164,7 +152,6 @@ npx allure open reports/allure-report
 - API + UI integration  
 - AI-powered test utilities  
 
----
 
 # 👨‍💻 Author
 
