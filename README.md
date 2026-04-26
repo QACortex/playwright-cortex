@@ -39,21 +39,40 @@ Flow:
 playwright-cortex/
 ├── .github/
 │   └── workflows/
-│       └──playwright.yml
+│       └── playwright.yml
+
 ├── tests/
 │   └── e2e-purchase-flow.spec.ts
+
 ├── pages/
+│   ├── BasePage.ts
+│   ├── LoginPage.ts
+│   ├── ProductsPage.ts
+│   ├── CartPage.ts
+│   ├── CheckoutPage.ts
+│   ├── CheckoutOverviewPage.ts
+│   └── OrderConfirmationPage.ts
+
 ├── test-data/
-├── utils/
-├── config/
+│   └── testData.json
+
+├── templates/       # Team reference templates
+│   ├── page/
+│   │   └── SamplePage.ts
+│   └── test/
+│       └── sample.spec.ts
+
 ├── reports/
 │   ├── html/
 │   ├── allure-results/
 │   └── allure-report/
+
 ├── screenshots/
+
 ├── playwright.config.ts
 ├── package.json
 ├── .env.qa
+├── .gitignore
 └── README.md
 ```
 
@@ -158,6 +177,14 @@ npx allure open reports/allure-report
 - Menu handling  
 - Logout functionality  
 
+## 📂 Templates
+
+Reusable templates for creating new pages and tests:
+
+- templates/page → Page Object template  
+- templates/test → Test file template  
+
+Use these as reference while creating new automation.
 
 # 🚧 Upcoming Enhancements
 
