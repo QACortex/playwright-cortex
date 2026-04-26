@@ -9,10 +9,10 @@ export class OrderConfirmationPage extends BasePage {
     super(page);
 
     // Locator for success message
-    this.successMessage = page.locator('[data-test="complete-header"]');
+    this.successMessage = page.getByRole('heading');
 
     // Locator for Back Home button
-    this.backHomeButton = page.locator('[data-test="back-to-products"]');
+    this.backHomeButton = page.getByText('Back Home', { exact: true })
   }
 
   // Validate order success message

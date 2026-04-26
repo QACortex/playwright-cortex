@@ -10,7 +10,7 @@ export class ProductsPage extends BasePage {
     super(page);
 
     // Locator for Products page title
-    this.productsTitle = page.locator('[data-test="title"]');
+    this.productsTitle = page.getByText('Products')
 
     // Locator for cart badge (item count)
     this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
@@ -33,14 +33,13 @@ export class ProductsPage extends BasePage {
     await productCard.getByRole('button', { name: 'Add to cart' }).click();
   }
 
-
-    // Verify product count in cart badge
+  // Verify product count in cart badge
    async verifyProductAddedToCart(expectedCount: number): Promise<void> {
       await expect(this.cartBadge).toBeVisible();
       await expect(this.cartBadge).toHaveText(expectedCount.toString());
    }
 
-   // Click on cart icon to navigate to Cart page
+  // Click on cart icon to navigate to Cart page
     async clickCartIcon(): Promise<void> {
      await this.clickElement(this.cartIcon);
     }

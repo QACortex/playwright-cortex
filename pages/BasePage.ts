@@ -13,10 +13,10 @@ export class BasePage {
     this.page = page;
 
     // Locator for common menu icon
-    this.menuIcon = page.locator('#react-burger-menu-btn');
+    this.menuIcon = page.getByRole('button', { name: 'Open Menu' });
 
     // Locator for common logout link
-    this.logoutLink = page.locator('#logout_sidebar_link');
+    this.logoutLink = page.getByRole('link', { name: 'Logout' });
   }
 
   // Navigate to given URL

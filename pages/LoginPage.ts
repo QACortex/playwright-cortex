@@ -17,9 +17,9 @@ export class LoginPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    this.usernameInput = page.locator('#user-name');
-    this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#login-button');
+    this.usernameInput = page.getByRole('textbox', { name: 'Username' })
+    this.passwordInput = page.getByRole('textbox', { name: 'Password' })
+    this.loginButton =  page.locator('[data-test="login-button"]')
   }
 
   // Launch the application URL

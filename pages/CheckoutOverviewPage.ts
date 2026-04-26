@@ -12,7 +12,7 @@ export class CheckoutOverviewPage extends BasePage {
     this.totalAmount = page.locator('[data-test="total-label"]');
 
     // Locator for Finish button
-    this.finishButton = page.locator('[data-test="finish"]');
+    this.finishButton = page.getByText('Finish', { exact: true });
   }
 
   // Get total amount from checkout overview page

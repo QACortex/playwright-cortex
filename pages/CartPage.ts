@@ -9,10 +9,10 @@ export class CartPage extends BasePage {
     super(page);
 
     // Locator for Cart page title
-    this.cartTitle = page.locator('[data-test="title"]');
+    this.cartTitle = page.getByText('Your Cart');
 
     // Locator for Checkout button
-    this.checkoutButton = page.locator('[data-test="checkout"]');
+    this.checkoutButton = page.getByRole('button', { name: 'Checkout' })
   }
 
   // Verify Cart page is loaded

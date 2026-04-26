@@ -11,13 +11,13 @@ export class CheckoutPage extends BasePage {
     super(page);
 
     // Locator for First Name field
-    this.firstNameInput = page.locator('[data-test="firstName"]');
+    this.firstNameInput = page.getByRole('textbox', { name: 'First Name' })
 
     // Locator for Last Name field
-    this.lastNameInput = page.locator('[data-test="lastName"]');
+    this.lastNameInput = page.getByRole('textbox', { name: 'Last Name' });
 
     // Locator for Zip/Postal Code field
-    this.zipCodeInput = page.locator('[data-test="postalCode"]');
+    this.zipCodeInput = page.getByRole('textbox', { name: 'Zip/Postal Code' })
 
     // Locator for Continue button
     this.continueButton = page.locator('[data-test="continue"]');
