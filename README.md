@@ -18,6 +18,7 @@ with a clean, maintainable, and extensible structure.
 - JSON test data management
 - HTML report
 - Allure report integration
+- CI/CD integration using GitHub Actions
 
 # 🧪 Sample Test Scenario
 
@@ -36,6 +37,9 @@ Flow:
 
 ```
 playwright-cortex/
+├── .github/
+│   └── workflows/
+│       └──playwright.yml
 ├── tests/
 │   └── e2e-purchase-flow.spec.ts
 ├── pages/
@@ -158,7 +162,6 @@ npx allure open reports/allure-report
 # 🚧 Upcoming Enhancements
 
 - Test tagging (smoke/regression)  
-- CI/CD integration (GitHub Actions / Jenkins)  
 - Logging utility  
 - Soft assertions  
 - API + UI integration  
