@@ -11,6 +11,9 @@
   "test:firefox": "npx playwright test --project=firefox",
   "test:webkit": "npx playwright test --project=webkit",
 
+  "test:smoke": "npx playwright test --grep @smoke",
+  "test:sanity": "npx playwright test --grep @sanity",
+
   "test:debug": "npx playwright test --debug",
 
   "test:report": "npx playwright show-report reports/html",

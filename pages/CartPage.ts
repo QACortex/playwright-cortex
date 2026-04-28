@@ -8,11 +8,8 @@ export class CartPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // Locator for Cart page title
     this.cartTitle = page.getByText('Your Cart');
-
-    // Locator for Checkout button
-    this.checkoutButton = page.getByRole('button', { name: 'Checkout' })
+    this.checkoutButton = page.getByRole('button', { name: 'Checkout' });
   }
 
   // Verify Cart page is loaded
@@ -31,6 +28,6 @@ export class CartPage extends BasePage {
 
   // Click on Checkout button
   async clickCheckout(): Promise<void> {
-    await this.clickElement(this.checkoutButton);
+    await this.actions.clickElement(this.checkoutButton);
   }
 }

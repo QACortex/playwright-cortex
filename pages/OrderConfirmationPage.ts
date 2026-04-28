@@ -9,19 +9,20 @@ export class OrderConfirmationPage extends BasePage {
     super(page);
 
     // Locator for success message
-    this.successMessage = page.getByRole('heading');
+    this.successMessage = page.getByRole('heading', { name: 'Thank you for your order!' });
 
     // Locator for Back Home button
-    this.backHomeButton = page.getByText('Back Home', { exact: true })
+    this.backHomeButton = page.getByText('Back Home', { exact: true });
   }
 
   // Validate order success message
   async verifyOrderSuccessMessage(): Promise<void> {
+    await expect(this.successMessage).toBeVisible();
     await expect(this.successMessage).toHaveText('Thank you for your order!');
   }
 
   // Click Back Home button
   async clickBackHome(): Promise<void> {
-    await this.clickElement(this.backHomeButton);
+    await this.actions.clickElement(this.backHomeButton);
   }
 }

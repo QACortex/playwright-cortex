@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class CheckoutOverviewPage extends BasePage {
@@ -8,10 +8,7 @@ export class CheckoutOverviewPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // Locator for total amount
     this.totalAmount = page.locator('[data-test="total-label"]');
-
-    // Locator for Finish button
     this.finishButton = page.getByText('Finish', { exact: true });
   }
 
@@ -22,6 +19,6 @@ export class CheckoutOverviewPage extends BasePage {
 
   // Click Finish button
   async clickFinish(): Promise<void> {
-    await this.clickElement(this.finishButton);
+    await this.actions.clickElement(this.finishButton);
   }
 }

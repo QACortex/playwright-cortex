@@ -9,13 +9,8 @@ export class ProductsPage extends BasePage {
   constructor(page: Page) {
     super(page);
 
-    // Locator for Products page title
-    this.productsTitle = page.getByText('Products')
-
-    // Locator for cart badge (item count)
+    this.productsTitle = page.getByText('Products');
     this.cartBadge = page.locator('[data-test="shopping-cart-badge"]');
-
-    // Locator for cart icon (top right)
     this.cartIcon = page.locator('[data-test="shopping-cart-link"]');
   }
 
@@ -30,17 +25,31 @@ export class ProductsPage extends BasePage {
       hasText: productName
     });
 
-    await productCard.getByRole('button', { name: 'Add to cart' }).click();
+    await this.actions.clickElement(productCard.getByRole('button', { name: 'Add to cart' }));
+  }
+
+  // Remove specific product from cart using product name
+  async removeProductFromCart(productName: string): Promise<void> {
+    const productCard = this.page.locator('[data-test="inventory-item"]').filter({
+      hasText: productName
+    });
+
+    await this.actions.clickElement(productCard.getByRole('button', { name: 'Remove' }));
   }
 
   // Verify product count in cart badge
-   async verifyProductAddedToCart(expectedCount: number): Promise<void> {
-      await expect(this.cartBadge).toBeVisible();
-      await expect(this.cartBadge).toHaveText(expectedCount.toString());
-   }
+  async verifyProductAddedToCart(expectedCount: number): Promise<void> {
+    await expect(this.cartBadge).toBeVisible();
+    await expect(this.cartBadge).toHaveText(expectedCount.toString());
+  }
+
+  // Verify cart is cleared
+  async verifyCartIsEmpty(): Promise<void> {
+    await expect(this.cartBadge).not.toBeVisible();
+  }
 
   // Click on cart icon to navigate to Cart page
-    async clickCartIcon(): Promise<void> {
-     await this.clickElement(this.cartIcon);
-    }
+  async clickCartIcon(): Promise<void> {
+    await this.actions.clickElement(this.cartIcon);
+  }
 }

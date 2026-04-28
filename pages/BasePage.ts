@@ -1,58 +1,43 @@
-import { Page, Locator, expect } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
+import { ElementActions } from '../utils/ElementActions';
 
 export class BasePage {
-    
-  // Playwright page instance
   protected page: Page;
+  protected actions: ElementActions;
+
   private readonly menuIcon: Locator;
   private readonly logoutLink: Locator;
+  private readonly resetAppStateLink: Locator;
 
-
-  // Initialize page
   constructor(page: Page) {
     this.page = page;
+    this.actions = new ElementActions(page);
 
-    // Locator for common menu icon
     this.menuIcon = page.getByRole('button', { name: 'Open Menu' });
-
-    // Locator for common logout link
+    this.resetAppStateLink = page.getByRole('link', { name: 'Reset App State' });
     this.logoutLink = page.getByRole('link', { name: 'Logout' });
   }
 
-  // Navigate to given URL
   async navigateTo(path: string): Promise<void> {
     await this.page.goto(path);
   }
 
-  // Click on element
-  async clickElement(locator: Locator): Promise<void> {
-    await locator.click();
-  }
-
-  // Enter text into input field
-  async enterText(locator: Locator, value: string): Promise<void> {
-    await locator.fill(value);
-  }
-
-  // Assert element is visible
-  async verifyElementVisible(locator: Locator): Promise<void> {
-    await expect(locator).toBeVisible();
-  }
-
-  // Get current page title
   async getPageTitle(): Promise<string> {
     return await this.page.title();
   }
 
-  // Click common menu icon
   async clickMenuIcon(): Promise<void> {
-    await this.clickElement(this.menuIcon);
+    await this.actions.clickElement(this.menuIcon);
   }
 
-  // Logout from application using common menu
+  async resetAppState(): Promise<void> {
+    await this.clickMenuIcon();
+    await this.actions.clickElement(this.resetAppStateLink);
+    await this.page.reload();
+  }
+
   async logout(): Promise<void> {
     await this.clickMenuIcon();
-    await this.clickElement(this.logoutLink);
+    await this.actions.clickElement(this.logoutLink);
   }
-
 }

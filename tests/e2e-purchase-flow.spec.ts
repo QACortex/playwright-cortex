@@ -1,21 +1,14 @@
-import { test } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { ProductsPage } from '../pages/ProductsPage';
-import { CartPage } from '../pages/CartPage';
-import { CheckoutPage } from '../pages/CheckoutPage';
-import { CheckoutOverviewPage } from '../pages/CheckoutOverviewPage';
-import { OrderConfirmationPage } from '../pages/OrderConfirmationPage';
+import { test } from '../fixtures/pageFixtures';
+import testData from '../test-data/testData.json';
 
-import testData  from '../test-data/testData.json';
-
-test('Login and add product to cart', async ({ page }) => {
-
-  const loginPage = new LoginPage(page);
-  const productsPage = new ProductsPage(page);
-  const cartPage = new CartPage(page);
-  const checkoutPage = new CheckoutPage(page);
-  const checkoutOverviewPage = new CheckoutOverviewPage(page);
-  const orderConfirmationPage = new OrderConfirmationPage(page);
+test('Add Single Products and Order it', async ({
+  loginPage,
+  productsPage,
+  cartPage,
+  checkoutPage,
+  checkoutOverviewPage,
+  orderConfirmationPage
+}) => {
 
   const product1 = testData.products.product1;
   const product2 = testData.products.product2;
@@ -32,45 +25,44 @@ test('Login and add product to cart', async ({ page }) => {
   // Verify Products page
   await productsPage.verifyProductsPageLoaded();
 
-  // Add specific product
+  // Add products to cart
   await productsPage.addProductToCart(product1);
   await productsPage.addProductToCart(product2);
 
-  
-  // Validate cart count = 2
+  // Validate cart count
   await productsPage.verifyProductAddedToCart(2);
 
-  // click on Cart Icon
+  // Click on cart icon
   await productsPage.clickCartIcon();
 
-    // Verify products inside cart
+  // Verify products inside cart
   await cartPage.verifyProductInCart(product1);
   await cartPage.verifyProductInCart(product2);
 
   // Click checkout
   await cartPage.clickCheckout();
 
-   // Fill checkout details
+  // Fill checkout details
   await checkoutPage.completeCheckoutStepOne(
     testData.checkout.firstName,
     testData.checkout.lastName,
     testData.checkout.zipCode
-   );
+  );
 
-   // Get and print total amount
-   const totalAmount = await checkoutOverviewPage.getTotalAmount();
-   console.log('Order Total Amount:', totalAmount);
+  // Get and print total amount
+  const totalAmount = await checkoutOverviewPage.getTotalAmount();
+  console.log('Order Total Amount:', totalAmount);
 
-   // Click Finish
-   await checkoutOverviewPage.clickFinish();
+  // Click finish
+  await checkoutOverviewPage.clickFinish();
 
-   // Validate success message
-   await orderConfirmationPage.verifyOrderSuccessMessage();
+  // Validate success message
+  await orderConfirmationPage.verifyOrderSuccessMessage();
 
-   // Click Back Home
-   await orderConfirmationPage.clickBackHome();
+  // Click back home
+  await orderConfirmationPage.clickBackHome();
 
-   // Click on Logout 
-   await productsPage.logout()
+  // Logout from application
+  await productsPage.logout();
 
 });
